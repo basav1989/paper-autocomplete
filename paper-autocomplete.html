@@ -6,6 +6,8 @@ The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
 The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
 Code distributed by Google as part of the polymer project is also
 subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+TBD:
+** use trie as the datastructure of choice
 -->
 <link rel="import" href="../polymer/polymer.html">
 <link rel="import" href="../iron-flex-layout/iron-flex-layout.html">
@@ -293,7 +295,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     },
 
     _createSuggestions: function(event) {
-      console.log("creating suggestions");
       this._currentIndex = -1;
       this._scrollIndex = 0;
       var value = event.target.value;
@@ -303,10 +304,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         // Shows the clear button.
         if (!this.disableShowClear) this.$.clear.style.display = 'block';
         // Search for the word in the source properties.
-        console.log("checking source");
 
         if (this.source && this.source.length > 0) {
-          console.log("searching for suggestions");
           this._suggestions = [];
           var length = this.source.length;
           var objText, objValue;
@@ -400,7 +399,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     },
 
     _keyenter: function() {
-      console.log("key entered");
       if (this.$.suggestionsWrapper.style.display == 'block' && this._currentIndex > -1) {
         var index = this._currentIndex;
         this._selection(index);
@@ -441,7 +439,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     },
 
     _onKeypress: function(event) {
-      console.log("on key press");
       var which = event.which;
       if (which === 40) {
         this._keydown();
@@ -534,8 +531,5 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         self._hideSuggestionsWrapper();
       }, 300);
     }
-
-
-
   });
 </script>
